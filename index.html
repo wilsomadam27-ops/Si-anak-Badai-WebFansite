@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Si Anak Badai - Aqsho Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Bebas+Neue&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a; 
+            color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        .font-bebas { font-family: 'Bebas Neue', cursive; }
+
+        .senja-gradient {
+            background: linear-gradient(to bottom, #0f172a, #1e293b, #7c2d12, #f59e0b);
+            background-size: 200% 200%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            transition: all 0.5s ease;
+        }
+
+        .glass-card:hover {
+            border: 1px solid rgba(251, 191, 36, 0.5);
+            box-shadow: 0 0 30px rgba(251, 191, 36, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .float {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.6);
+            padding: 10px;
+            border-radius: 50px;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #7c2d12; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src="pesisir.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-control" class="glass-card">
+        <button onclick="toggleMusic()" id="musicBtn" class="bg-yellow-500 w-10 h-10 rounded-full flex items-center justify-center text-black">
+            <span id="musicIcon">▶</span>
+        </button>
+        <span class="text-[10px] font-bold tracking-widest pr-4 hidden md:block">MUSIC: HINDIA</span>
+    </div>
+
+    <header class="senja-gradient h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
+        <div class="absolute bottom-0 w-full h-64 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
+        <div class="absolute top-20 left-10 w-32 h-32 bg-yellow-500/10 blur-3xl rounded-full float"></div>
+        <div class="absolute bottom-40 right-10 w-40 h-40 bg-orange-500/10 blur-3xl rounded-full float" style="animation-delay: 1.5s"></div>
+
+        <h2 class="text-yellow-400 font-bebas text-3xl tracking-widest mb-2 opacity-80 animate-pulse">TERE LIYE</h2>
+        <h1 class="text-7xl md:text-9xl font-bebas text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] leading-none uppercase">
+            Si Anak <span class="text-yellow-400">Badai</span>
+        </h1>
+        <p class="mt-6 text-lg md:text-xl max-w-xl italic font-light text-yellow-100/80">
+            "Badai bukan untuk ditakuti, tapi untuk dihadapi dengan dada tegak!"
+        </p>
+        <a href="#sinopsis" class="mt-12 bg-white text-black font-bold py-4 px-10 rounded-full hover:bg-yellow-400 hover:scale-110 transition-all duration-300 shadow-[0_0_20px_rgba(251,191,36,0.4)] uppercase tracking-wider text-sm">
+            Selami Cerita
+        </a>
+    </header>
+
+    <section id="sinopsis" class="py-24 px-6 max-w-5xl mx-auto reveal">
+        <div class="text-center mb-16">
+            <h2 class="font-bebas text-6xl text-yellow-500 tracking-wide mb-4">Muara Manawa Adalah Rumah</h2>
+            <div class="w-24 h-1 bg-yellow-500 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="glass-card p-8 md:p-12 rounded-[2rem] shadow-2xl relative overflow-hidden group">
+            <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed text-lg text-center">
+                <p class="mb-6">
+                    Di pedalaman Sumatera, di mana sungai mengalir layaknya urat nadi kehidupan, berdiri sebuah kampung bernama <strong>Muara Manawa</strong>. Bagi Zaenal dan kawan-kawannya, kampung ini bukan sekadar barisan rumah panggung kayu; ia adalah sejarah, tawa sahabat, dan aroma air sungai yang segar.
+                </p>
+                
+                <div id="extraContent" class="hidden">
+                    <p class="mb-6">
+                        Namun, ketenangan itu terkoyak ketika bayangan raksasa beton mulai mendekat. <strong>Tuan Muda Alex</strong>, seorang pengusaha ambisius, datang membawa janji "kemajuan". Di balik kata pelabuhan modern, terselip niat untuk meratakan Muara Manawa dan mengubur semua kenangan penduduknya.
+                    </p>
+                    <p class="mb-6">
+                        Geng Anak Badai menolak untuk diam. Mereka adalah anak-anak yang lahir dari rahim sungai, yang belajar keberanian dari deburan ombak dan deru angin badai. Mereka membuktikan bahwa perlawanan tidak selalu butuh senjata; terkadang, hanya butuh keteguhan hati dan kecerdikan.
+                    </p>
+                    <p class="text-yellow-400 font-bold italic">
+                        "Badai akan datang, menghantam apa saja. Tapi kayu yang kuat dan akar yang dalam takkan pernah tumbang."
+                    </p>
+                </div>
+
+                <button id="readMoreBtn" onclick="toggleReadMore()" class="mt-8 text-yellow-500 font-bold uppercase tracking-[0.2em] text-sm hover:text-white transition-colors">
+                    + Baca Selengkapnya
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="tokoh" class="bg-[#0a0f1d] py-24 px-6 border-t border-yellow-900/20">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="font-bebas text-5xl text-white tracking-widest uppercase">Geng <span class="text-yellow-500">Anak Badai</span></h2>
+                <p class="text-slate-500 mt-2">Klik karakter untuk melihat detail backstory</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div onclick="openModal('zaenal')" class="group cursor-pointer bg-slate-900/50 border border-slate-800 p-6 rounded-3xl hover:border-yellow-500 hover:-translate-y-2 transition-all duration-500">
+                    <div class="aspect-square bg-slate-800 rounded-2xl mb-4 overflow-hidden">
+                        <img src="ZAENAL.jpg" alt="Zaenal" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-yellow-500 font-bebas text-3xl">ZAENAL</h3>
+                    <p class="text-white opacity-50 text-sm">The Visionary Leader</p>
+                </div>
+
+                <div onclick="openModal('ode')" class="group cursor-pointer bg-slate-900/50 border border-slate-800 p-6 rounded-3xl hover:border-yellow-500 hover:-translate-y-2 transition-all duration-500">
+                    <div class="aspect-square bg-slate-800 rounded-2xl mb-4 overflow-hidden">
+                        <img src="EDO.jpg" alt="Ode" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-yellow-500 font-bebas text-3xl">ODE</h3>
+                    <p class="text-white opacity-50 text-sm">The Ambitious Tank</p>
+                </div>
+
+                <div onclick="openModal('malim')" class="group cursor-pointer bg-slate-900/50 border border-slate-800 p-6 rounded-3xl hover:border-yellow-500 hover:-translate-y-2 transition-all duration-500">
+                    <div class="aspect-square bg-slate-800 rounded-2xl mb-4 overflow-hidden">
+                        <img src="MALIM.png" alt="Malim" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-yellow-500 font-bebas text-3xl">MALIM</h3>
+                    <p class="text-white opacity-50 text-sm">The Information Broker</p>
+                </div>
+
+                <div onclick="openModal('awang')" class="group cursor-pointer bg-slate-900/50 border border-slate-800 p-6 rounded-3xl hover:border-yellow-500 hover:-translate-y-2 transition-all duration-500">
+                    <div class="aspect-square bg-slate-800 rounded-2xl mb-4 overflow-hidden">
+                        <img src="AWANG.jpg" alt="Awang" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <h3 class="text-yellow-500 font-bebas text-3xl">AWANG</h3>
+                    <p class="text-white opacity-50 text-sm">The Silent Guardian</p>
+                </div>
+            </div>
+
+            <div class="mt-12 max-w-xl mx-auto">
+                <div onclick="openModal('alex')" class="group cursor-pointer bg-red-950/10 border border-red-900/30 p-8 rounded-3xl hover:border-red-600 transition-all duration-500 flex flex-col items-center">
+                    <div class="w-32 h-32 bg-slate-800 rounded-full mb-4 overflow-hidden border-2 border-red-600">
+                        <img src="ALEX.png" alt="Pak Alex" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-red-600 font-bebas text-4xl">PAK ALEX</h3>
+                    <p class="text-white opacity-40 mb-4">The Charismatic Destroyer</p>
+                    <span class="text-[10px] text-red-900 font-bold tracking-[0.3em] uppercase">Target Perlawanan</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="review" class="py-24 px-6 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-600/10 blur-[120px] rounded-full"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="font-bebas text-5xl text-white tracking-widest uppercase">Review <span class="text-yellow-500">Pembaca</span></h2>
+                <div class="flex justify-center gap-1 mt-4">
+                    <span class="text-yellow-400 text-3xl drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]">★</span>
+                    <span class="text-yellow-400 text-3xl drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]">★</span>
+                    <span class="text-yellow-400 text-3xl drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]">★</span>
+                    <span class="text-yellow-400 text-3xl drop-shadow-[0_0_10px_rgba(250,204,21,0.8)]">★</span>
+                    <span class="text-slate-600 text-3xl">★</span>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 md:p-12 rounded-[2.5rem] border-l-4 border-l-yellow-500 relative">
+                <div class="absolute top-6 left-8 text-yellow-500/20 text-8xl font-serif">“</div>
+                
+                <div class="relative z-10">
+                    <div class="text-slate-200 text-lg md:text-xl leading-relaxed italic text-justify font-light space-y-6">
+                        <p>
+                            Sebagai orang yang biasanya jarang menyentuh novel, saya cukup terkejut karena <span class="text-yellow-400 font-semibold italic">Si Anak Badai</span> ternyata mampu mematahkan stigma bahwa membaca buku tebal itu membosankan. Alurnya terasa sangat dinamis dan penuh petualangan, membawa kita langsung ke tengah hiruk-pikuk kehidupan anak-anak pesisir yang berani. Setiap babnya diisi dengan aksi yang bikin deg-degan, mulai dari persaingan balapan perahu yang kompetitif hingga perjuangan heroik melawan kapal pengeruk pasir yang mengancam tanah kelahiran mereka. Gaya bahasa Tere Liye yang lugas namun visual membuat pengalaman membaca buku ini terasa sangat sinematik, seolah-olah saya tidak sedang membaca barisan kata, melainkan sedang menonton film petualangan yang seru dan menegangkan di layar lebar.
+                        </p>
+                        <p>
+                            Lebih dari sekadar aksi, buku ini menyentuh sisi emosional melalui potret persahabatan Zaenal dan kawan-kawannya yang sangat solid dan penuh kesetiakawanan. Saya sangat terkesan bagaimana isu lingkungan yang berat dan konflik sosial bisa dikemas dengan begitu ringan tanpa terasa seperti sedang digurui atau membaca buku pelajaran. Ada rasa haru dan bangga saat melihat bagaimana keberanian anak-anak kecil ini mampu memberikan dampak besar bagi komunitas mereka. Bagi saya yang bukan pembaca rutin, novel ini menjadi bukti bahwa cerita yang hebat adalah cerita yang bisa membuat kita peduli pada nasib karakternya, sekaligus memberikan "tamparan" halus tentang pentingnya menjaga alam dan harga diri kampung halaman.
+                        </p>
+                    </div>
+
+                    <div class="mt-12 flex items-center gap-6 border-t border-white/10 pt-8">
+                        <div class="w-20 h-20 rounded-2xl overflow-hidden border-2 border-yellow-500 shadow-[0_0_15px_rgba(245,158,11,0.3)] hover:scale-110 transition-transform">
+                            <img src="foto-aqsho.jpg" alt="Aqsho Izdiharudin" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Aqsho+Izdiharudin&background=f59e0b&color=000';">
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-xl uppercase tracking-wider">Aqsho Izdiharudin</h4>
+                            <p class="text-yellow-500 text-sm font-medium">Reader & Web Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-800 text-center">
+        <p class="text-slate-500 text-sm">© 2026 Cerita Si Anak Badai - Website Fansite</p>
+        <p class="text-yellow-500 font-extrabold mt-3 tracking-widest text-xs uppercase">
+            Programmed by Aqsho Izdiharudin
+        </p>
+        <p class="text-slate-600 font-medium mt-1 tracking-[0.4em] text-[10px] uppercase">
+            Visual Characters Credit: Gemini AI & Musik: Hindia
+        </p>
+    </footer>
+
+    <div id="characterModal" class="fixed inset-0 bg-black/95 z-50 invisible opacity-0 flex items-center justify-center p-4 transition-all duration-300">
+        <div class="bg-[#0f172a] border border-yellow-500/30 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl transform scale-95 transition-all duration-300" id="modalContent">
+            <div class="relative">
+                <button onclick="closeModal()" class="absolute top-5 right-5 text-white/50 hover:text-white text-4xl z-20">&times;</button>
+                <div class="grid md:grid-cols-2">
+                    <div class="h-80 md:h-auto bg-slate-800">
+                        <img id="modalImg" src="" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-8">
+                        <h4 id="modalName" class="font-bebas text-5xl text-yellow-500 mb-1"></h4>
+                        <p id="modalRole" class="text-yellow-100/40 text-sm mb-6 uppercase tracking-widest"></p>
+                        
+                        <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+                            <div>
+                                <h5 class="text-yellow-500 font-bold mb-1 underline">Backstory</h5>
+                                <p id="modalBackstory"></p>
+                            </div>
+                            <div>
+                                <h5 class="text-yellow-500 font-bold mb-1 underline">Motivasi</h5>
+                                <p id="modalMotivasi"></p>
+                            </div>
+                            <div>
+                                <h5 class="text-yellow-500 font-bold mb-1 underline">Detail Fisik</h5>
+                                <p id="modalDetail"></p>
+                            </div>
+                        </div>
+                        <button onclick="closeModal()" class="mt-8 w-full py-3 bg-yellow-500 text-black font-bold rounded-xl hover:bg-white transition-all">TUTUP</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.innerText = "||";
+            } else {
+                audio.pause();
+                musicIcon.innerText = "▶";
+            }
+        }
+
+        const characters = {
+            zaenal: {
+                name: "ZAENAL",
+                role: "The Visionary Leader",
+                img: "ZAENAL.jpg",
+                backstory: "Zaenal memiliki perawakan atletis khas anak pesisir yang tangguh dengan fitur wajah menonjol berupa bekas luka kecil di rahang akibat menyelamatkan warga saat badai.",
+                motivasi: "Membuktikan bahwa Kampung Manowa bisa sejahtera tanpa harus menjual tanah ulayat mereka kepada penguasa kota.",
+                detail: "Selalu membawa kompas tembaga tua sebagai simbol pengingat arah moral dan prinsip hidupnya."
+            },
+            ode: {
+                name: "ODE",
+                role: "The Ambitious Tank",
+                img: "EDO.jpg",
+                backstory: "Ode memiliki fisik dominan dengan tubuh bongsor dan kuat hasil latihan fisik berat yang ia jalani setiap hari demi impian menjadi nakhoda besar.",
+                motivasi: "Membangun pelabuhan yang ia impikan tanpa harus merusak tempat tinggal aslinya.",
+                detail: "Sering mengenakan ban lengan merah sebagai tanda 'komandan' dan mahir memperkirakan tonase kapal lewat kedalaman lambungnya."
+            },
+            malim: {
+                name: "MALIM",
+                role: "The Information Broker",
+                img: "MALIM.png",
+                backstory: "Malim bertubuh paling kecil, kurus, dan tampak rapuh, namun sangat lincah dengan wajah dinamis yang dahinya sering berkerut mengikuti celotehannya.",
+                motivasi: "Menjadi telinga dan mata bagi kawan-kawannya melalui informasi yang ia kumpulkan dari radio dan kota.",
+                detail: "Matanya kecil dan waspada, sering mengenakan pakaian longgar agar tetap gesit saat melompat di antara dermaga kayu."
+            },
+            awang: {
+                name: "AWANG",
+                role: "The Silent Guardian",
+                img: "AWANG.jpg",
+                backstory: "Awang memiliki postur perenang profesional dengan pundak bidang dan lengan panjang yang kuat, serta kulit yang berkilau karena sisa air garam.",
+                motivasi: "Menjaga keheningan dan kelestarian ekosistem bawah laut Muara Manowa dari kehancuran teknologi.",
+                detail: "Rambutnya dipotong sangat pendek dan sering tampak basah, dengan sorot mata penuh konsentrasi yang seolah mendengarkan arus laut."
+            },
+            alex: {
+                name: "PAK ALEX",
+                role: "The Charismatic Destroyer",
+                img: "ALEX.png",
+                backstory: "Pak Alex adalah antagonis bertubuh tinggi, besar, dan perkasa dengan otot lengan menonjol, wajah tampan namun mengintimidasi, serta kumis tebal yang melintang.",
+                motivasi: "Ambisi murni membangun megaproyek pelabuhan demi keuntungan materi dan posisi politik di pusat.",
+                detail: "Tampil dengan kemeja gulung, sepatu bot kulit, dan tatapan mata dingin yang mencerminkan kekuatan kasar serta keangkuhannya."
+            }
+        };
+
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if(el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+            });
+        });
+
+        function toggleReadMore() {
+            const extra = document.getElementById('extraContent');
+            const btn = document.getElementById('readMoreBtn');
+            if(extra.classList.contains('hidden')) {
+                extra.classList.remove('hidden');
+                btn.innerText = "- Tutup Sinopsis";
+            } else {
+                extra.classList.add('hidden');
+                btn.innerText = "+ Baca Selengkapnya";
+            }
+        }
+
+        function openModal(charKey) {
+            const char = characters[charKey];
+            const modal = document.getElementById('characterModal');
+            const content = document.getElementById('modalContent');
+            
+            document.getElementById('modalImg').src = char.img;
+            document.getElementById('modalName').innerText = char.name;
+            document.getElementById('modalRole').innerText = char.role;
+            document.getElementById('modalBackstory').innerText = char.backstory;
+            document.getElementById('modalMotivasi').innerText = char.motivasi;
+            document.getElementById('modalDetail').innerText = char.detail;
+
+            modal.classList.remove('invisible', 'opacity-0');
+            modal.classList.add('opacity-100');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('characterModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.add('invisible', 'opacity-0');
+            modal.classList.remove('opacity-100');
+            content.classList.add('scale-95');
+            content.classList.remove('scale-100');
+        }
+
+        window.onclick = (e) => { if (e.target.id === 'characterModal') closeModal(); }
+    </script>
+</body>
+</html>
